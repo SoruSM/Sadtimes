@@ -43,7 +43,7 @@ local Useless = {
     "LordsTraining",
     "Helmet",
     "DragonSpeech",
-
+    "ChiBlock"
 }
 function IsStringEmpty(String)
 	if type(String) == 'string' then
@@ -312,12 +312,14 @@ Run = function()
                 local ScrollingFrame = FakeFill.ScrollingFrame
                 local MainLabel = ScrollingFrame.Label
                 Clone.Position = UDim2.new(1, -605, 0, 5)
-                CurrentlyOn = Player
                 if Clone.Visible == false and CurrentlyOn == Player then 
                     Clone.Visible = true
                 elseif Clone.Visible == true and CurrentlyOn == Player then
                     Clone.Visible = false
+                elseif Clone.Visible == false and CurrentlyOn ~= Player then
+                    Clone.Visible = true
                 end
+                CurrentlyOn = Player
 
                 local NewName = GetName(Player)
                 local NewSkills = GetSkills(Player)
