@@ -269,13 +269,14 @@ Run = function()
             if script ~= shared.SPRLS then
                 return false
             end
-            
+            local CurrentlyOn
             local Button = FFC(Label,"SPB") or Instance.new("TextButton",Label)
             Button.Name = "SPB"
             Button.Transparency = 1
             Button.Text = ""
             Button.Size = UDim2.new(1, 0, 1, 0)
             Button.Position = UDim2.new(0, 0, 0, 0)
+            
 
     
             Button.MouseButton1Click:Connect(function()
@@ -291,9 +292,6 @@ Run = function()
                 elseif FFC(PlayerGui,"LeaderboardGui") and not FFC(PlayerGui.LeaderboardGui.MainFrame,"PlayerCheck") then
                     Clone.Parent = PlayerGui.LeaderboardGui.MainFrame
                 end
-                if Clone.Visible == false then
-                    Clone.Visible = true
-                end
                 local MainFrame = FFC(Clone,"MainFrame")
                 local Header = FFC(MainFrame,"Header")
                 local Title = FFC(Header,"Title")
@@ -306,6 +304,12 @@ Run = function()
                 local ScrollingFrame = FakeFill.ScrollingFrame
                 local MainLabel = ScrollingFrame.Label
                 Clone.Position = UDim2.new(1, -605, 0, 5)
+                CurrentlyOn = Player
+                if Clone.Visible == false and CurrentlyOn == Player then 
+                    Clone.Visible = true
+                elseif Clone.Visible == true and CurrentlyOn == Player then
+                    Clone.Visible = false
+                end
 
                 local NewName = GetName(Player)
                 local NewSkills = GetSkills(Player)
