@@ -53,11 +53,19 @@ function IsStringEmpty(String)
 end
 function GetName(Player)
     local Name 
-    if IsStringEmpty(Player:GetAttribute("LastName")) then
-        Name = Player.Name.. "\n".. Player:GetAttribute("FirstName")
-    else
-        Name = Player.Name.. "\n".. Player:GetAttribute("FirstName")..  " " .. Player:GetAttribute("LastName")
-    end
+        if game.PlaceId == 3541987450  then
+            if IsStringEmpty(Player.leaderstats.LastName.Value) then
+                Name = Player.Name.. "\n"..Player.leaderstats.FirstName.Value
+            else
+                Name = Player.Name.. "\n"..Player.leaderstats.FirstName.Value.." "..Player.leaderstats.LastName.Value
+            end
+        elseif game.PlaceId == 5208655184 then
+            if IsStringEmpty(Player:GetAttribute("LastName")) then
+                Name = Player.Name.. "\n".. Player:GetAttribute("FirstName")
+            else
+                Name = Player.Name.. "\n".. Player:GetAttribute("FirstName")..  " " .. Player:GetAttribute("LastName")
+            end
+        end
     return Name
 end
 
