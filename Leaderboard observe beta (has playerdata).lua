@@ -43,7 +43,7 @@ local Useless = {
     "LordsTraining",
     "Helmet",
     "DragonSpeech",
-    
+
 }
 function IsStringEmpty(String)
 	if type(String) == 'string' then
@@ -131,10 +131,14 @@ end
 function GetArtifact(Player)
     if Player.Character then
         local ArtifactFolder = FFC(Player.Character,"Artifacts")
-        if #GetChildren(ArtifactFolder) ~= 0 then
-            return ArtifactFolder:FindFirstChildWhichIsA("Folder").Name
+        if ArtifactFolder then
+            if #GetChildren(ArtifactFolder) ~= 0 then
+                return ArtifactFolder:FindFirstChildWhichIsA("Folder").Name
+            else
+                return "None"
+            end
         else
-            return "None"
+            return "No Folder?!"
         end
     end
 end
@@ -324,7 +328,7 @@ Run = function()
                     table.concat(NewSpells, ", ")..
                     "\n \n".."<b>Tags : </b>"..table.concat(CollectionService:GetTags(Player.Character) , ", ")..
                     "\n \n".."<b>Artifact : </b>"..NewArtifact..
-                    "\n \n".. "<b>Edict : </b>".."<font color='rgb(239, 184, 56)'>".."Tier 3"..Edict.."</font>"
+                    "\n \n".. "<b>Edict : </b>".."<font color='rgb(239, 184, 56)'>".."Tier 3 "..Edict.."</font>"
                 )
                 else
                     MainLabel.Text = (
