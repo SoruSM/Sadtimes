@@ -9,6 +9,7 @@ local Camera = workspace.CurrentCamera
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = WFC(LocalPlayer,"PlayerGui")
 local Object = game:GetObjects("rbxassetid://11876978100")[1]
+syn.protect_gui(Object)
 local Useless = {
     "Armis",
     "Trickstus",
@@ -295,6 +296,7 @@ Run = function()
                     return
                 end
                 local Clone = FFC(PlayerGui,"Custom") and FFC(PlayerGui.Custom.MainFrame,"PlayerCheck") or FFC(PlayerGui,"LeaderboardGui") and FFC(PlayerGui.LeaderboardGui.MainFrame,"PlayerCheck") or Object:Clone()
+                syn.protect_gui(Clone)
                 if FFC(PlayerGui,"Custom") and not FFC(PlayerGui.Custom.MainFrame,"PlayerCheck") then
                     Clone.Parent = PlayerGui.Custom.MainFrame
                 elseif FFC(PlayerGui,"LeaderboardGui") and not FFC(PlayerGui.LeaderboardGui.MainFrame,"PlayerCheck") then
