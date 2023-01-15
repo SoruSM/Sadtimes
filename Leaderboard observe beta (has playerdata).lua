@@ -142,7 +142,7 @@ function GetArtifact(Player)
         local ArtifactFolder = FFC(Player.Character,"Artifacts")
         if ArtifactFolder then
             if #GetChildren(ArtifactFolder) ~= 0 then
-                return ArtifactFolder:FindFirstChildWhichIsA("Folder").Name
+                return ArtifactFolder:FindFirstChildWhichIsA("Accessory").Name
             else
                 return "None"
             end
